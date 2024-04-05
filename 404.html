@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Page Not Found</title>
+    <link rel="stylesheet" href="./404.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+</head>
+<body>
+    <div class="hero">
+        <div class="inner-text">
+            <p class="p1">404:</p>
+            <p class="p2">Error</p>
+        </div>
+    </div>
+
+    <script>
+        var typed = new Typed('.p2', {
+            strings: ["Page not found 😝", "Why are you still here?", "Fine, I'll get rid of you😾"],
+            typeSpeed: 12.5,
+            backSpeed: 10,
+            backDelay: 2000,
+            showCursor: true,
+            loop: true
+        });
+        setTimeout(function() {
+            window.location.href = '/';
+        }, 18000);
+    </script>
+</body>
+</html>
