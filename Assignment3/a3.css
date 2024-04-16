@@ -1,0 +1,115 @@
+body.day {
+    background-color: #f4f4f4; /* Light mode background color */
+    color: #333; /* Light mode text color */
+    background-image: url('./Media/LightMode.webp'); /* Background image for light mode */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+body.night {
+    background-color: #1e1e1e; /* Dark mode background color */
+    color: #dcdcdc; /* Dark mode text color */
+    background-image: url('./Media/Darkmode.webp'); /* Background image for dark mode */
+    /* Other background properties are not needed here as they are inherited from body.day */
+}
+
+/* General styles for the editor container that override the body background image */
+#editor-container {
+    background-color: #ffffff; /* This will be for day mode */
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.5s, color 0.5s;
+}
+
+/* Dark mode specific styles for the editor container */
+body.night #editor-container {
+    background-color: #000000; /* Solid black background for dark mode */
+    /* The color for the text inside the editor container in night mode */
+    color: #dcdcdc;
+}
+
+/* Other styles remain unchanged */
+
+
+.code-comment {
+    color: #6a9955; /* Green for comments */
+}
+
+.code-keyword {
+    color: #0000ff; /* Blue for keywords */
+}
+
+.code-function {
+    color: #d14; /* Red for functions */
+}
+
+input, button {
+    padding: 10px;
+    margin-top: 5px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 16px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex; /* Ensures the text and button are aligned properly */
+    justify-content: space-between; /* Pushes children to opposite ends */
+    align-items: center; /* Vertically centers the text and button */
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-family: 'Source Code Pro', monospace;
+}
+
+/* Style for the task items to look like code comments */
+.task-item {
+    color: #6a9955; /* Green color used for comments */
+    font-family: 'Source Code Pro', monospace; /* Ensures consistent font for code */
+    /* Additional styling to make it look more like a code editor */
+    background: #f4f4f4; /* Or use a slightly different shade to distinguish tasks */
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc; /* Subtle border */
+}
+
+/* You might also want to apply some styling when in night mode */
+body.night .task-item {
+    background: #1e1e1e; /* Dark background for items in night mode */
+    color: #6a9955; /* Maintains the green color for contrast */
+}
+
+.task-text {
+    margin-right: 10px; /* Adds space between the task text and the delete button */
+    flex-grow: 1;
+}
+
+.delete-btn {
+    margin-left: 5px; /* Additional space can be added if needed */
+    padding: 5px 10px; /* Adjust padding for better button aesthetics */
+    cursor: pointer; /* Makes it clear the button is clickable */
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1 {
+    margin-right: 20px; /* Ensures some space between the text and the image */
+}
+
+#header-gif {
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 05px;
+}
