@@ -1,0 +1,145 @@
+<html>
+  <head>
+    <title>Sarge Test</title>
+    <script
+      language="JavaScript"
+      type="text/javascript"
+      src="elizabot.js"
+    ></script>
+    <script
+      language="JavaScript"
+      type="text/javascript"
+      src="elizadata.js"
+    ></script>
+
+    <script language="JavaScript" type="text/javascript">
+      <!--
+
+      // initialize with argument 'true': no random choices
+      var eliza = new ElizaBot(true);
+
+      var exampleLines = [
+        "I'm feeling overwhelmed with this project.",
+        "The client keeps changing the requirements.",
+        "My team is not communicating well.",
+        "I think I messed up the budget calculations.",
+        "Is it normal to feel out of depth sometimes?",
+        "I'm not sure I'm cut out for this.",
+        "Can you give me advice on handling disputes on site?",
+        "How do I keep the team motivated with all these delays?",
+        "I'm worried about the upcoming inspection.",
+        "Sometimes, I think about switching careers.",
+      ];
+
+      var exampleCursor = 0;
+
+      function elizaReset() {
+        eliza.reset();
+        exampleCursor = 0;
+      }
+
+      function elizaNext() {
+        if (exampleCursor >= exampleLines.length) {
+          alert('Last entry reached.\nClick "Reset" to start over again.');
+          return;
+        }
+        var userinput = exampleLines[exampleCursor++];
+        document.forms.eform.edisplay.value += "USER:  " + userinput + "\n";
+        document.forms.eform.edisplay.value +=
+          "SARGE: " + eliza.transform(userinput) + "\n";
+      }
+
+      //-->
+    </script>
+  </head>
+
+  <body
+    TOPMARGIN="0"
+    LEFTMARGIN="0"
+    RIGHTMARGIN="0"
+    BOTTOMMARGIN="0"
+    MARGINHEIGHT="0"
+    MARGINWIDTH="0"
+    style="border: 0"
+  >
+    <a name="top"></a>
+
+    <center>
+      <p>&nbsp;</p>
+      <h3>Sarge Test</h3>
+      <table border="0" cellspacing="10" cellpadding="0">
+        <form name="eform" onsubmit="return false">
+          <tr valign="top">
+            <td><textarea name="edisplay" cols="70" rows="30"></textarea></td>
+            <td align="center">
+              <input
+                type="button"
+                value="Next step"
+                onclick="elizaNext()"
+              /><br /><br /><input
+                type="reset"
+                value="Reset"
+                onclick="elizaReset(); return true"
+              />
+            </td>
+          </tr>
+        </form>
+      </table>
+      <div class="button">
+        <a href="./index.html">Test it out yourself!</a>
+      </div>
+    </center>
+  </body>
+  <style>
+    body {
+      background-color: #f0e68c; /* khaki background to give a dusty feel */
+      font-family: "Courier New", Courier, monospace; /* monospace font for a typewriter-like effect */
+    }
+    .button a {
+      margin-top: 5px;
+      /* margin-bottom: 5px; */
+      font-family: "Courier New", Courier, monospace;
+      background-color: #ffffe0;
+      border: 1px solid black;
+      padding: 5px 10px; /* padding similar to button */
+      text-decoration: none; /* Remove underline from links */
+      color: black; /* Text color */
+      display: inline-block; /* Align with form buttons */
+      text-align: center;
+      width: auto;
+      cursor: pointer; /* Cursor to indicate clickable */
+    }
+    h3 {
+      color: #ff8c00; /* dark orange */
+      border-bottom: 3px solid black;
+      padding-bottom: 10px;
+    }
+    table {
+      margin-top: 50px;
+      border: 2px solid black;
+      background-color: #fffacd;
+    }
+    textarea {
+      background-color: #ffffff;
+      border: 1px solid black;
+      font-family: "Courier New", Courier, monospace;
+    }
+    input[type="text"],
+    input[type="submit"],
+    input[type="button"],
+    input[type="reset"] {
+      font-family: "Courier New", Courier, monospace;
+      background-color: #ffffe0;
+      border: 1px solid black;
+    }
+    input[type="submit"],
+    input[type="reset"] {
+      cursor: pointer;
+      /* font-weight: bold; */
+    }
+    input[type="submit"]:hover,
+    input[type="reset"]:hover {
+      background-color: #ffd700;
+    }
+  </style>
+</html>

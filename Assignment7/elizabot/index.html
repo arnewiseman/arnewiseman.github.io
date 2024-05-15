@@ -1,0 +1,159 @@
+<html>
+  <head>
+    <title>Sarge (sargebot.js)</title>
+    <script
+      language="JavaScript"
+      type="text/javascript"
+      src="elizabot.js"
+    ></script>
+    <script
+      language="JavaScript"
+      type="text/javascript"
+      src="elizadata.js"
+    ></script>
+
+    <script language="JavaScript" type="text/javascript">
+      <!--
+
+      var eliza = new ElizaBot();
+      var elizaLines = new Array();
+
+      var displayCols = 60;
+      var displayRows = 20;
+
+      function elizaReset() {
+        eliza.reset();
+        elizaLines.length = 0;
+        elizaStep();
+      }
+
+      function elizaStep() {
+        var f = document.forms.e_form;
+        var userinput = f.e_input.value;
+        if (eliza.quit) {
+          f.e_input.value = "";
+          if (confirm("This session is over.\nStart over?")) elizaReset();
+          f.e_input.focus();
+          return;
+        } else if (userinput != "") {
+          var usr = "YOU:   " + userinput;
+          var rpl = "SARGE: " + eliza.transform(userinput);
+          elizaLines.push(usr);
+          elizaLines.push(rpl);
+          // display nicely
+          // (fit to textarea with last line free - reserved for extra line caused by word wrap)
+          var temp = new Array();
+          var l = 0;
+          for (var i = elizaLines.length - 1; i >= 0; i--) {
+            l += 1 + Math.floor(elizaLines[i].length / displayCols);
+            if (l >= displayRows) break;
+            else temp.push(elizaLines[i]);
+          }
+          elizaLines = temp.reverse();
+          f.e_display.value = elizaLines.join("\n");
+        } else if (elizaLines.length == 0) {
+          // no input and no saved lines -> output initial
+          var initial = "SARGE: " + eliza.getInitial();
+          elizaLines.push(initial);
+          f.e_display.value = initial + "\n";
+        }
+        f.e_input.value = "";
+        f.e_input.focus();
+      }
+
+      //-->
+    </script>
+  </head>
+
+  <body
+    TOPMARGIN="0"
+    LEFTMARGIN="0"
+    RIGHTMARGIN="0"
+    BOTTOMMARGIN="0"
+    MARGINHEIGHT="0"
+    MARGINWIDTH="0"
+    style="border: 0"
+    onload="window.setTimeout('elizaReset()',100)"
+  >
+    <a name="top"></a>
+
+    <center>
+      <p>&nbsp;</p>
+      <h3>Sarge</h3>
+      <table border="0" cellspacing="10" cellpadding="0">
+        <form name="e_form" onsubmit="elizaStep();return false">
+          <tr>
+            <td colspan="2">
+              <textarea name="e_display" cols="60" rows="20"></textarea>
+            </td>
+          </tr>
+          <tr valign="middle">
+            <td><input type="text" name="e_input" size="50" /></td>
+            <td align="right">
+              <input type="submit" value="&nbsp;Talk&nbsp;" />
+              <input
+                type="reset"
+                value="Reset"
+                onClick="window.setTimeout('elizaReset()',100)"
+              />
+            </td>
+          </tr>
+        </form>
+      </table>
+      <div class="button">
+        <a href="./eliza_test.html">Try Our Demo</a>
+      </div>
+    </center>
+    <style>
+      body {
+        background-color: #f0e68c; /* khaki background to give a dusty feel */
+        font-family: "Courier New", Courier, monospace; /* monospace font for a typewriter-like effect */
+      }
+      .button a {
+        margin-top: 5px;
+        /* margin-bottom: 5px; */
+        font-family: "Courier New", Courier, monospace;
+        background-color: #ffffe0;
+        border: 1px solid black;
+        padding: 5px 10px; /* padding similar to button */
+        text-decoration: none; /* Remove underline from links */
+        color: black; /* Text color */
+        display: inline-block; /* Align with form buttons */
+        text-align: center;
+        width: auto;
+        cursor: pointer; /* Cursor to indicate clickable */
+      }
+      h3 {
+        color: #ff8c00; /* dark orange */
+        border-bottom: 3px solid black;
+        padding-bottom: 10px;
+      }
+      table {
+        margin-top: 50px;
+        border: 2px solid black;
+        background-color: #fffacd;
+      }
+      textarea {
+        background-color: #ffffff;
+        border: 1px solid black;
+        font-family: "Courier New", Courier, monospace;
+      }
+      input[type="text"],
+      input[type="submit"],
+      input[type="reset"] {
+        font-family: "Courier New", Courier, monospace;
+        background-color: #ffffe0;
+        border: 1px solid black;
+      }
+      input[type="submit"],
+      input[type="reset"] {
+        cursor: pointer;
+        font-weight: bold;
+      }
+      input[type="submit"]:hover,
+      input[type="reset"]:hover {
+        background-color: #ffd700;
+      }
+    </style>
+  </body>
+</html>
