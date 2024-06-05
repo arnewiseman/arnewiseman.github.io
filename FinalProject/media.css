@@ -19,6 +19,9 @@ p, a, .btn, .section__text__paragraph, .nav-links li a, .menu-links a, .contact-
 
 
 @media screen and (max-width: 1400px) {
+  .navbar {
+    z-index: 1000; /* Ensures the navbar stays on top */
+  }
   .menu-links.open, .hamburger-icon.open {
     display: block;
   }

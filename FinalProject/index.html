@@ -15,6 +15,34 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
+    <style>
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .easter-egg-active {
+        animation: spin 0.5s linear infinite;
+        transition: opacity 0.5s ease;
+        opacity: 0.5;
+      }
+
+      #profile-pic.spinning {
+        animation: spin 0.5s linear infinite;
+      }
+
+      #job-message {
+        margin-top: 10px;
+        font-size: 1.5rem;
+        color: #333;
+        text-align: center;
+        display: none;
+      }
+    </style>
   </head>
 
   <body>
@@ -59,11 +87,14 @@
       >
         <div class="section__pic-container">
           <img
+            id="profile-pic"
             src="./style/profile.jpg"
             alt="Profile picture"
             class="img-fluid rounded-circle"
           />
         </div>
+        <h3 id="job-message">You will give me a job</h3>
+
         <div class="section__text">
           <p class="lead">Hello, I'm</p>
           <h1 class="display-4">Arne Wiseman</h1>
@@ -77,13 +108,17 @@
           </p>
           <div class="btn-container">
             <a href="style/resume.jpg" class="btn btn-primary">Download CV</a>
-            <a href="./#contact" class="btn btn-secondary">Contact Info</a>
+            <a href="./contact.html" class="btn btn-secondary">Contact Info</a>
           </div>
           <div id="socials-container" class="mt-3">
-            <a href="https://linkedin.com/" class="btn btn-outline-dark mx-1"
+            <a
+              href="https://www.linkedin.com/in/arnewiseman/"
+              class="btn btn-outline-dark mx-1"
               ><img src="./style/linkedin.png" alt="LinkedIn" class="icon"
             /></a>
-            <a href="https://github.com/" class="btn btn-outline-dark mx-1"
+            <a
+              href="https://github.com/arnewiseman"
+              class="btn btn-outline-dark mx-1"
               ><img src="./style/github.png" alt="GitHub" class="icon"
             /></a>
           </div>
@@ -110,5 +145,28 @@
         <p>&copy; 2024 Arne Wiseman. All Rights Reserved.</p>
       </footer>
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let clickCount = 0;
+        const profilePic = document.getElementById("profile-pic");
+        const newImageUrl = "./style/hypno.png"; // Update with your new image URL
+        const jobMessage = document.getElementById("job-message");
+
+        profilePic.addEventListener("click", function () {
+          clickCount++;
+          if (clickCount === 5) {
+            this.classList.add("easter-egg-active", "spinning");
+            setTimeout(() => {
+              this.src = newImageUrl;
+              this.classList.remove("easter-egg-active");
+              jobMessage.style.display = "block";
+            }, 3000);
+          } else if (clickCount > 5) {
+            this.classList.add("spinning");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
